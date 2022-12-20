@@ -60,12 +60,26 @@ ajudar a alcançar nossos objetivos.
 
 ## Instalação
 
-- [Nova instalação](#nova-instalação)
-- [Primeiro acesso](#primeiro-acesso)
-- [Personalizando a instalação](#personalizando-a-instalação)
-- [Instalação em servidor](#instalação-em-servidor)
-- [Instalação do pacote de relatórios](#instalação-do-pacote-de-relatórios)
-- [Upgrade](#upgrade)
+- [i-Educar](#i-educar)
+  - [Conteúdo](#conteúdo)
+  - [Sobre i-Educar](#sobre-i-educar)
+  - [Comunicação](#comunicação)
+  - [Como contribuir](#como-contribuir)
+  - [Instalação](#instalação)
+    - [Dependência](#dependência)
+      - [Docker](#docker)
+      - [Servidor](#servidor)
+    - [Instalação utilizando Docker](#instalação-utilizando-docker)
+      - [Primeiro acesso](#primeiro-acesso)
+      - [Personalizando a instalação](#personalizando-a-instalação)
+      - [Xdebug](#xdebug)
+      - [Executando testes unitários](#executando-testes-unitários)
+    - [Instalação em servidor](#instalação-em-servidor)
+      - [Configurando o servidor](#configurando-o-servidor)
+      - [Executando o instalador](#executando-o-instalador)
+    - [Instalação do pacote de relatórios](#instalação-do-pacote-de-relatórios)
+    - [Upgrade](#upgrade)
+  - [Perguntas frequentes (FAQ)](#perguntas-frequentes-faq)
 
 ### Dependência
 
@@ -122,7 +136,7 @@ atualizar sua instalação do i-Educar, siga os passos do [upgrade](#upgrade).
 Clone o repositório:
 
 ```bash
-git clone https://github.com/portabilis/i-educar.git && cd i-educar
+git clone https://github.com/cgrio/ieducar.git && cd ieducar
 ```
 
 Faça o build das imagens Docker utilizadas no projeto (pode levar alguns
@@ -135,7 +149,12 @@ docker-compose up -d --build
 Execute o comando para fazer uma nova instalação:
 
 ```bash
-docker-compose exec php composer new-install
+docker exec ieducar-php /usr/local/bin/php -d allow_url_fopen='1' -d disable_functions='' -d memory_limit='1536M' /usr/local/bin/composer new-install
+```
+
+ou então pelo terminal do container ieducar-php na aplicação Docker
+```bash
+docker-compose exec ieducar-php composer new-install
 ```
 
 #### Primeiro acesso

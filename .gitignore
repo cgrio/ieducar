@@ -1,7 +1,6 @@
 /database/backups
 /database/data
 /database/migrations/extras
-/packages/*
 /public/modules
 /docker/jasper/
 /vendor
