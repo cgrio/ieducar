@@ -22,7 +22,7 @@ class Suspended
     {
         $active = Config::get('legacy.config.active_on_ieducar');
         $level = Session::get('nivel');
-
+        $active = true;
         if ($active || $level === 1) {
             return $next($request);
         }
